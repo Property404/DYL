@@ -26,26 +26,33 @@ class ObjectEncoder(json.JSONEncoder):
 		
 class ZincAddress:
 	def __init__(self):
-		first_name = ""
-		last_name = ""
-		address_line1 = ""
-		address_line2 = ""
-		zip_code = ""
-		city = ""
-		state = ""
-		country = ""
+		self.first_name = ""
+		self.last_name = ""
+		self.address_line1 = ""
+		self.address_line2 = ""
+		self.phone_number = ""
+		self.zip_code = ""
+		self.city = ""
+		self.state = ""
+		self.country = ""
+		self.phone_number = ""
 class ZincPaymentMethod:
 	def __init__(self):
 		number = ""
 		security_code = ""
 		expiration_month = ""
 		expiration_year = ""
+class ZincRetailerCredentials:
+	def __info__(self):
+		email = ""
+		password = ""
 class ZincOrder:
 	def __init__(self):
 		self.payment_method = ZincPaymentMethod()
 		self.client_token = ZINC_CLIENT_TOKEN
 		self.retailer = ""
 		self.product_id = ""
+		self.retailer_credentials = ZincRetailerCredentials()
 		self.shipping_address = ZincAddress()
 		self.is_gift = False
 		self.customer_email = ""
@@ -54,5 +61,6 @@ class ZincOrder:
 
 def send(order):
 	json_dump = json.dumps(order, cls=ObjectEncoder, indent=2, sort_keys=True)
+	print(json_dump)
 	return requests.post("https://api.zinc.io/v0/order", json_dump)
 	
