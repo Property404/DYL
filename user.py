@@ -1,6 +1,6 @@
 # Address
 class Address:
-	def __init__():
+	def __init__(self):
 		self.street = None
 		self.city = None
 		self.state = None
