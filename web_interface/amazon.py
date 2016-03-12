@@ -16,7 +16,7 @@ def _construct_zinc_order_object(user, product_id, quantity = 1):
 	if user.address.address_line2 is None:
 		order.shipping_address.address_line2 = ""
 	if user.address.country is None:
-		order.shiping_address = ""
+		order.shiping_address.country = ""
 	
 	# Get payment method
 	order.payment_method.number = user.credit_card.number
