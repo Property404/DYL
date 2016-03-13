@@ -51,16 +51,19 @@ class ZincOrder:
 		self.payment_method = ZincPaymentMethod()
 		self.client_token = ZINC_CLIENT_TOKEN
 		self.retailer = ""
-		self.product_id = ""
+		self.products = []
 		self.retailer_credentials = ZincRetailerCredentials()
 		self.shipping_address = ZincAddress()
 		self.is_gift = False
 		self.customer_email = ""
-		self.shipping_preference = ""
+		self.shipping_method = ""
 		self.billing_address = ZincAddress()
+		self.is_gift = False
 
 def send(order):
 	json_dump = json.dumps(order, cls=ObjectEncoder, indent=2, sort_keys=True)
+	#json_dump = json_dump.replace('"products": {','products": [{')
+	#json_dump = json_dump.replace('"quantity": 1\n  }','"quantity": 1\n  }]')
 	print(json_dump)
 	return requests.post("https://api.zinc.io/v0/order", json_dump)
 	

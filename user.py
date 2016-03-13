@@ -1,11 +1,10 @@
 # Address
 class Address:
 	def __init__(self):
-		self.street = None
-		self.city = None
-		self.state = None
 		self.address_line1 = None
 		self.address_line2 = None
+		self.city = None
+		self.state = None
 		self.country = None
 		self.zip_code = None
 		
@@ -23,7 +22,7 @@ class CreditCard:
 # The user proper
 class User:
 	def __init__(self):
-		self.first_name = None
+		self.first_name = "DEF"
 		self.last_name = None
 		self.middle_name = None
 		self.address = Address()
@@ -31,5 +30,6 @@ class User:
 		self.email_pass = None
 		self.facebook_id = None
 		self.facebook_pass = None
+		self.phone_number = None
 		self.credit_card = CreditCard();
 		

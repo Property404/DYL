@@ -22,11 +22,11 @@ def _construct_zinc_order_object(user, product_id, quantity = 1):
 	
 	# Order information
 	order.retailer = "amazon"
-	order.product_id = product_id
+	order.products.append({"product_id" : product_id, "quantity" : quantity})
 	order.quantity = quantity 
 	order.is_gift = False
-	order.customer_email = user.email_id
-	order.shipping_preference = "cheapest"
+	order.customer_email = "lifekillpoly@gmail.com"
+	order.shipping_method = "cheapest"
 	
 	# Get shipping address
 	order.shipping_address = user.address
@@ -36,6 +36,7 @@ def _construct_zinc_order_object(user, product_id, quantity = 1):
 		order.shiping_address.country = ""
 	order.shipping_address.first_name = copy.deepcopy(user.first_name)
 	order.shipping_address.last_name = copy.deepcopy(user.last_name)
+	order.shipping_address.phone_number = copy.deepcopy(user.phone_number)
 	print(order.shipping_address.last_name)
 	
 	# Get payment method
@@ -48,7 +49,7 @@ def _construct_zinc_order_object(user, product_id, quantity = 1):
 	order.billing_address.last_name = copy.deepcopy(user.credit_card.last_name)
 	
 	# Set up credentilas
-	order.retailer_credentials.email = "lifekill@sharklasers.com"
+	order.retailer_credentials.email = "lifekillpoly@gmail.com"
 	order.retailer_credentials.password = "P01yhack$"
 	
 	print(user.last_name)
