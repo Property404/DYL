@@ -33,6 +33,7 @@ Your's truely, \n
 	
 	def dox_twitter(self):
 		data = to_json.to_json(self.profile)
+		print("<pre>"+data+"</pre>")
 		pastebin_url = pastebin.paste(data)
 		return twitter.make_tweet("Have fun: "+pastebin_url);
 		
@@ -54,4 +55,4 @@ Your's truely, \n
 		if self.profile.credit_card.number is not None:
 			print("Buying a bunch of bleach...<br>")
 			self.buy_shit()
-		print("Done.<br>")
+		print("Done.<br><br>Congratulations. Your life is ruined.")

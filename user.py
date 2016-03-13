@@ -24,12 +24,9 @@ class User:
 	def __init__(self):
 		self.first_name = "DEF"
 		self.last_name = None
-		self.middle_name = None
 		self.address = Address()
 		self.email_id = None
 		self.email_pass = None
-		self.facebook_id = None
-		self.facebook_pass = None
 		self.phone_number = None
 		self.credit_card = CreditCard();
 		self.drivers_license = None

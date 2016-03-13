@@ -7,5 +7,6 @@ def make_tweet(msg="",account=api):
 		account.update_status(status=msg)
 		return 1
 	except tweepy.TweepError as e:
-		print(e.args)
+		print("Twitter Error: "+str(e.args))
+		print("<br>")
 		return -1

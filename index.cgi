@@ -13,11 +13,12 @@ try:
 				name=pretty_name
 			self.type = type
 			self.required = required
-	print("Hey")
+
 	fields = [Field("First Name","first_name",required=True),
 	Field("Last Name","last_name",required=True),
 	Field("Email","email_id", required=True, type="email"),
 	Field("Email Password","email_password",required=True, type="password"),
+	Field("Mobile Phone","phone_number",required=False),
 	Field("Credit Card",type="sep"),
 	Field("Card Number","cc_number"),
 	Field("Security Code","cc_security_code"),
@@ -43,10 +44,14 @@ try:
 		if field.type is not "sep":
 			if field.required:
 				field.pretty_name = "<strong>*"+field.pretty_name+"</strong>"
-			print(field.pretty_name+":<br><input name='"+field.name+"' type='"+field.type+"'"+(" required" if field.required else "")+"><br><br>")
+			print(field.pretty_name+":<br><input name='"+field.name+"' type='"+
+			field.type+"'"+(" required" if field.required else "")
+			+(" max='"+field.max+"'" if field.max is not None else "")
+			+(" min='"+field.min+"'" if field.min is not None else "")+"><br><br>")
 		else:
 			print("<br><strong>"+field.pretty_name+"</strong><br><br>")
 
+	print("&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' style='zoom: 1.5;transform:scale(1.5);' required> I have read the terms and conditions<br>")
 	print("<br><input type='submit' value='Ruin my Life'>")
 	print("</form></div>")
 	print("""<script>
