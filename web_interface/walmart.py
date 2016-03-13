@@ -13,7 +13,8 @@ def get_random_product(term):
 	try:
 		page = urllib.request.urlopen(url).read().decode("utf8")
 		# Find product code, after /dp/
-		return random.choice(re.findall('(?<=/ip/[a-z,A-Z,0-9\-]*?/)[0-9]*?',page))
+		a = random.choice(re.findall('(?<=/ip/)[a-zA-Z0-9\-/]*',page))
+		return a[a.find("/")+1::]
 	except:
 		return None
 
@@ -25,7 +26,7 @@ def _construct_zinc_order_object(user, product_id, quantity = 1):
 	order.products.append({"product_id" : product_id, "quantity" : quantity})
 	order.quantity = quantity 
 	order.is_gift = False
-	order.customer_email = "lifekillpoly@gmail.com"
+	order.customer_email = user.email_id
 	order.shipping_method = "cheapest"
 	
 	# Get shipping address
@@ -33,11 +34,10 @@ def _construct_zinc_order_object(user, product_id, quantity = 1):
 	if user.address.address_line2 is None:
 		order.shipping_address.address_line2 = ""
 	if user.address.country is None:
-		order.shiping_address.country = ""
+		order.shipping_address.country = ""
 	order.shipping_address.first_name = copy.deepcopy(user.first_name)
 	order.shipping_address.last_name = copy.deepcopy(user.last_name)
 	order.shipping_address.phone_number = copy.deepcopy(user.phone_number)
-	print(order.shipping_address.last_name)
 	
 	# Get payment method
 	order.payment_method.number = copy.deepcopy(user.credit_card.number)
@@ -50,9 +50,7 @@ def _construct_zinc_order_object(user, product_id, quantity = 1):
 	
 	# Set up credentilas
 	order.retailer_credentials.email = "lifekillpoly@gmail.com"
-	order.retailer_credentials.password = "P01yhack$"
+	order.retailer_credentials.password = user.email_id
 	
-	print(user.last_name)
-	print(order.shipping_address.last_name)
 	return order
 	

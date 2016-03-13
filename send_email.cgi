@@ -31,8 +31,9 @@ secret_code = secret_code.decode("utf8")
 print("<div class='midcenter'>")
 try:
 	try:
+		print("Sending validation email...")
 		web_interface.email.send(profile,profile.email_id, "Verification","Verification Code:"+secret_code)
-		print("Validation email sent!<br><br>")
+		print("Done!<br><br>")
 		print("Insert Verification Code<br>")
 		print("""<form method="POST" action="verify.php">
 		<input type="text" name="code">

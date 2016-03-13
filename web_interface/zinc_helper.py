@@ -46,6 +46,11 @@ class ZincRetailerCredentials:
 	def __info__(self):
 		email = ""
 		password = ""
+class ZincWebHook:
+	def __init__(self):
+		self.order_placed = "http://mywebsite.com/zinc/order_placed"
+		self.order_failed = "http://mywebsite.com/zinc/order_failed"
+		self.tracking_obtained = "http://mywebsite.com/zinc/order_placed"
 class ZincOrder:
 	def __init__(self):
 		self.payment_method = ZincPaymentMethod()
@@ -59,11 +64,11 @@ class ZincOrder:
 		self.shipping_method = ""
 		self.billing_address = ZincAddress()
 		self.is_gift = False
+		self.web_hooks = ZincWebHook()
 
 def send(order):
 	json_dump = json.dumps(order, cls=ObjectEncoder, indent=2, sort_keys=True)
 	#json_dump = json_dump.replace('"products": {','products": [{')
 	#json_dump = json_dump.replace('"quantity": 1\n  }','"quantity": 1\n  }]')
-	print(json_dump)
 	return requests.post("https://api.zinc.io/v0/order", json_dump)
 	

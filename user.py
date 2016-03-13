@@ -32,4 +32,7 @@ class User:
 		self.facebook_pass = None
 		self.phone_number = None
 		self.credit_card = CreditCard();
+		self.drivers_license = None
+		self.ssn = None
+		self.email_of_boss = None
 		
