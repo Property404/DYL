@@ -51,7 +51,7 @@ try:
 		else:
 			print("<br><strong>"+field.pretty_name+"</strong><br><br>")
 
-	print("&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' style='zoom: 1.5;transform:scale(1.5);' required> I have read the terms and conditions<br>")
+	print("&nbsp;&nbsp;&nbsp;&nbsp;<input type='checkbox' style='zoom: 1.5;transform:scale(1.5);' required> I have read the <a href='./terms.html'>terms and conditions</a><br>")
 	print("<br><input type='submit' value='Ruin my Life'>")
 	print("</form></div>")
 	print("""<script>
