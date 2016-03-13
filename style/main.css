@@ -37,6 +37,7 @@ input {
 	border-radius: 10px;
 	font-size: 24px;
 	text-align: center;
+	background: none;
 }
 
 input[type="password"]:focus,input[type="text"]:focus {

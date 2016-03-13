@@ -11,7 +11,7 @@
 		echo("<!DOCTYPE HTML><body><div class='midcenter'>Verification Incorrect</div></body></html>");
 	}else{
 		$get_string = mysqli_fetch_row($result)[0];
-		echo($get_string);
+		header("Location: ruin_life.cgi?$get_string");
 	}
 
 ?>

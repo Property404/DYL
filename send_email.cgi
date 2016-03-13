@@ -20,22 +20,19 @@ profile = user.User()
 
 # Get email from GET
 arguments = cgi.FieldStorage()
-print("Yes")
 profile.email_id = arguments["email"].value
 profile.email_pass= arguments["password"].value
 
 # Get secret code
-print(constants.MAIN_URL+"get_secret.php?public"+arguments["public"].value)
 secret_code = urlopen(constants.MAIN_URL+"get_secret.php?public="+arguments["public"].value).read()
-print(":()")
 secret_code = secret_code.decode("utf8")
 
 
 print("<div class='midcenter'>")
 try:
 	try:
-		print(web_interface.email.send(profile,profile.email_id, "Verification","Verification Code:"+secret_code))
-		print("Validation email sent<br><br>")
+		web_interface.email.send(profile,profile.email_id, "Verification","Verification Code:"+secret_code)
+		print("Validation email sent!<br><br>")
 		print("Insert Verification Code<br>")
 		print("""<form method="POST" action="verify.php">
 		<input type="text" name="code">
@@ -52,7 +49,7 @@ try:
 		print("<input type='button' onclick='location.reload();' value='Refresh Page' />")
 	except Exception as e:
 		print(e)
-		print("Failed")
+		print("(Failed)")
 except Exception as q:
 	print(q)
 
